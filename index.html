@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geometric Structures</title>
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+<!-- D3 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<style>
+:root {
+  --bg: #fafafa;
+  --text: #111;
+  --accent: #2563eb;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --accent: #60a5fa;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  max-width: 750px;
+  margin: 60px auto;
+  padding: 0 20px;
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+}
+
+h1, h2, h3 {
+  margin-top: 2em;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 6px 12px;
+  border: 1px solid var(--accent);
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#viz {
+  margin-top: 30px;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<button onclick="toggleDark()">Toggle Dark Mode</button>
+
+<h1>Geometric Structures</h1>
+
+<p>
+This site explores circle geometry, spirals, conformal mappings, rapidity,
+and half-angle identities.
+</p>
+
+<h2>Euler's Formula</h2>
+
+<p>
+One of the foundational identities:
+</p>
+
+<p>
+\[
+e^{i\theta} = \cos\theta + i\sin\theta
+\]
+</p>
+
+<h2>Logarithmic Spiral</h2>
+
+<p>
+In polar form:
+\[
+r = ae^{b\theta}
+\]
+</p>
+
+<div id="viz"></div>
+
+<script>
+// KaTeX auto render
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body);
+});
+
+// Dark mode with localStorage
+function toggleDark() {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("darkMode",
+    document.body.classList.contains("dark"));
+}
+
+// Preserve theme on reload
+if (localStorage.getItem("darkMode") === "true") {
+  document.body.classList.add("dark");
+}
+
+// Simple D3 spiral demo
+const width = 400;
+const height = 400;
+const svg = d3.select("#viz")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+const centerX = width / 2;
+const centerY = height / 2;
+
+let points = [];
+for (let t = 0; t < 6 * Math.PI; t += 0.1) {
+  let r = 5 * Math.exp(0.15 * t);
+  let x = centerX + r * Math.cos(t);
+  let y = centerY + r * Math.sin(t);
+  points.push([x, y]);
+}
+
+svg.append("path")
+  .datum(points)
+  .attr("fill", "none")
+  .attr("stroke", "steelblue")
+  .attr("stroke-width", 2)
+  .attr("d", d3.line());
+</script>
+
+</body>
+</html>
