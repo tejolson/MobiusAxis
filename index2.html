@@ -36,19 +36,19 @@
             ctx.fill();
             ctx.stroke();
 
-            ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
             ctx.beginPath();
             ctx.moveTo(centerX, centerY);  
-            ctx.lineTo(centerX + 150, centerY);
-            ctx.arc(centerX, centerY, 100, -Math.PI/4, 3*Math.PI/4);
+            ctx.lineTo(centerX, centerY);
+            ctx.arc(centerX, centerY, 100, Math.PI/4, 3*Math.PI/4);
             ctx.fill();
             ctx.stroke();
 
             ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
             ctx.beginPath();
             ctx.moveTo(centerX, centerY);  
-            ctx.lineTo(centerX + 150, centerY);
-            ctx.arc(centerX, centerY, Math.PI/4, 2*Math.PI/3, -2*Math.PI/3);
+            ctx.lineTo(centerX, centerY);
+            ctx.arc(centerX, centerY, 100, 3*Math.PI/4, 7*Math.PI/5);
             ctx.fill();
             ctx.stroke();
 
@@ -56,7 +56,7 @@
             ctx.beginPath();
             ctx.moveTo(centerX, centerY);  
             ctx.lineTo(centerX + 150, centerY);
-            ctx.arc(centerX, centerY, Math.PI/4, -Math.PI/3, -2*Math.PI/3);
+            ctx.arc(centerX, centerY, 100, 7*Math.PI/4, 9*Math.PI/4);
             ctx.fill();
             ctx.stroke();
 
