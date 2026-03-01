@@ -30,9 +30,9 @@
         function drawCirclesAndHyperbolae() {
             const centerX = canvas.width / 2;
             const centerY = canvas.height / 2;
-            ctx.fillStyle = 'rgba(255, 0, 0, 0.5)';
+            ctx.fillStyle = 'rgba(255, 255, 0, 0.5)';
             ctx.beginPath();
-            ctx.arc(centerX, centerY, 100, 0, Math.PI * 2);
+            ctx.arc(centerX, centerY, -60, 50, Math.PI/2);
             ctx.fill();
             ctx.stroke();
 
@@ -40,7 +40,7 @@
             ctx.beginPath();
             ctx.moveTo(centerX, centerY);  
             ctx.lineTo(centerX + 150, centerY);
-            ctx.arc(centerX, centerY, 150, Math.PI, 2 * Math.PI);
+            ctx.arc(centerX, centerY, 150, Math.PI, Math.PI/2);
             ctx.fill();
             ctx.stroke();
         }
